@@ -1,9 +1,0 @@
-SERVER_PORT=3001
-MODE=DEV
-DB_HOST=localhost
-DB_PORT=5432
-DB_USERNAME=postgres
-DB_PASSWORD=vulcano
-DB_DATABASE=agenda_dev
-DB_SYNCHRONIZE=true
-DATABASE_URL=postgresql://postgres:B9uyXUZ@L34CKkq@db.tforgzplratsnmwcshfy.supabase.co:5432/postgres
