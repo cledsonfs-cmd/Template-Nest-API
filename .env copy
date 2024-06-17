@@ -1,0 +1,8 @@
+SERVER_PORT=3000
+MODE=DEV
+DB_HOST=https://tforgzplratsnmwcshfy.supabase.co
+DB_PORT=5432
+DB_USERNAME=postgres
+DB_PASSWORD=&js7_YiMkQh9eR&
+DB_DATABASE=agenda_dev
+DB_SYNCHRONIZE=true
