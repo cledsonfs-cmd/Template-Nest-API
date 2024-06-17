@@ -3,24 +3,18 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { AuthGuard } from 'src/auth/auth.guard';
-import { PessoaService } from 'src/pessoa/pessoa.service';
-import { CreatePessoaDto } from 'src/pessoa/dto/create-pessoa.dto';
 import { JwtService } from '@nestjs/jwt';
 
 @Controller('user')
 export class UserController {
   constructor(
     private readonly usersService: UsersService,
-    private readonly pessoaService: PessoaService,
     private jwtService: JwtService,
     ) {}
 
   @Post()
-  async create(@Body() createUserDto: CreateUserDto) {
-    let createPessoDTO:CreatePessoaDto = new CreatePessoaDto()
-    createPessoDTO.email = createUserDto.email        
-    const pessoa = await this.pessoaService.create(createPessoDTO)
-    createUserDto.idPessoa = pessoa.id
+  async create(@Body() createUserDto: CreateUserDto) {    
+    createUserDto.idStatus = 1
     const user = await this.usersService.create(createUserDto);
     
     const payload = { sub: user.id, email: user.email };
@@ -29,8 +23,7 @@ export class UserController {
     return {
       uid: user.id,
       email: user.email,
-      token,
-      pessoa
+      token,      
     };
   }
 
