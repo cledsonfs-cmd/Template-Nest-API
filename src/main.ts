@@ -1,29 +1,26 @@
-// import { NestFactory } from '@nestjs/core';
-// import { AppModule } from './app.module';
-
-// async function bootstrap() {
-//   const app = await NestFactory.create(AppModule);
-//   await app.listen(3000);
-// }
-// bootstrap();
-import { ValidationPipe } from '@nestjs/common';
-import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+
 import { AppModule } from './app.module';
+import { NestFactory } from '@nestjs/core';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
- const app = await NestFactory.create(AppModule);
- app.useGlobalPipes(new ValidationPipe());
+  const app = await NestFactory.create(AppModule);
+  app.useGlobalPipes(new ValidationPipe());
 
- const config = new DocumentBuilder()
-   .setTitle('Api Nest - Template Base')
-   .setDescription('Templeta basico para desenvolvimento de APIs em Java.')
-   .setVersion('1.0')
-   .setContact('Cledson Francisco Silva', 'www.cledsonfs.com.br', 'cledsonfs@gmail.com')
-   .build();
- const document = SwaggerModule.createDocument(app, config);
- SwaggerModule.setup('api', app, document);
+  const config = new DocumentBuilder()
+    .setTitle('Api Nest - Template Base')
+    .setDescription('Templeta basico para desenvolvimento de APIs em Nest.')
+    .setVersion('1.0')
+    .setContact(
+      'Cledson Francisco Silva',
+      'www.cledsonfs.com.br',
+      'cledsonfs@gmail.com',
+    )
+    .build();
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api', app, document);
 
- await app.listen(3000);
+  await app.listen(3000);
 }
 bootstrap();
