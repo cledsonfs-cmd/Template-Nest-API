@@ -1,0 +1,23 @@
+version: '3.8'
+
+networks:
+  template-net:
+    driver: bridge
+    name: template-net
+  db-postgresql-net:
+    name: db-postgresql-net
+    driver: bridge
+
+services:
+  nest-api:
+    container_name: 'nest-api'
+    image: templates.local:3000/nest-api
+    networks:
+      - template-net
+      - db-postgresql-net
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    restart: unless-stopped
