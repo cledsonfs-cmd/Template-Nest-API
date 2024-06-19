@@ -2,6 +2,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 import { AppModule } from './app.module';
 import { NestFactory } from '@nestjs/core';
+import { SecuritySchemeObject } from '@nestjs/swagger/dist/interfaces/open-api-spec.interface';
 import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
@@ -12,9 +13,15 @@ async function bootstrap() {
     .setTitle('Api Nest - Template Base')
     .setDescription('Templeta basico para desenvolvimento de APIs em Nest.')
     .setVersion('1.0')
-    .addBearerAuth(     
-      { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' },
-      'access-token',)
+    .addBearerAuth(
+      {
+        type: 'http',
+        schema: 'Bearer',
+        bearerFormat: 'Token',
+      } as SecuritySchemeObject,
+      'Bearer',
+    )
+
     .setContact(
       'Cledson Francisco Silva',
       'www.cledsonfs.com.br',
