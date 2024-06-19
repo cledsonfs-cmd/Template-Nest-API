@@ -17,7 +17,7 @@ export class UserHistorico extends BaseEntity {
   descricao: string;
 
   @Column({ name: 'id_user', type: 'varchar', length: 50 })
-  user: User;
+  idUser: string;
 
   @UpdateDateColumn({
     name: 'updated_at',

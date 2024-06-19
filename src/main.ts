@@ -12,6 +12,9 @@ async function bootstrap() {
     .setTitle('Api Nest - Template Base')
     .setDescription('Templeta basico para desenvolvimento de APIs em Nest.')
     .setVersion('1.0')
+    .addBearerAuth(     
+      { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' },
+      'access-token',)
     .setContact(
       'Cledson Francisco Silva',
       'www.cledsonfs.com.br',

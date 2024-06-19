@@ -9,6 +9,6 @@ export class CreateUserHistoricoDto {
   @IsNotEmpty()
   descricao: string;
 
-  @ApiProperty({ example: '000000' })
-  user: User;
+  @ApiProperty({ example: 'uuid' })
+  idUser: string;
 }

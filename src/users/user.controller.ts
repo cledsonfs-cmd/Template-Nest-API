@@ -6,6 +6,8 @@ import {
   Patch,
   Param,
   Delete,
+  HttpException,
+  HttpStatus,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -23,18 +25,25 @@ export class UserController {
 
   @Public()
   @Post()
-  async create(@Body() createUserDto: CreateUserDto) {
-    let objeto;
-    await this.userService.create(createUserDto).then((user) => {
-      objeto = user;
+   async create(@Body() createUserDto: CreateUserDto) {
+    let test;
+    await this.userService.findEmail(createUserDto.email).then((user) =>{
+      test = user;
     });
-    const historico = {
-      descricao: StatusEnum.ATIVO,
-      user: objeto,
-    };
-    this.userHistoricoService.create(historico);
-
-    return objeto;
+    
+    if(test===null){  
+      let objeto;
+      await this.userService.create(createUserDto).then((user) => {
+        objeto = user;
+        this.userHistoricoService.create({
+            descricao: StatusEnum.ATIVO,
+            idUser: user.id,
+          })
+      });
+      return objeto;
+    }else{
+      throw new HttpException('E-mail já utilizado por outro usuário', HttpStatus.UNPROCESSABLE_ENTITY);
+    }
   }
 
   @Get()
@@ -45,6 +54,11 @@ export class UserController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.userService.findOne(id);
+  }
+
+  @Get(':email')
+  findEmail(@Param('email') email: string) {
+    return this.userService.findEmail(email);
   }
 
   @Patch(':id')

@@ -25,6 +25,10 @@ export class UsersService {
     return this.repository.findOneBy({ email: email });
   }
 
+  findEmail(email: string): Promise<User> {
+    return this.repository.findOneBy({ email: email });
+  }
+
   async update(id: string, updateUserDto: UpdateUserDto): Promise<User> {
     const objeto = await this.repository.preload({
       id: id,

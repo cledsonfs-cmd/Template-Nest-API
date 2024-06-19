@@ -18,7 +18,7 @@ export class User extends BaseEntity {
   })
   updatedAt: Date;
 
-  @Column({ name: 'email', type: 'varchar', nullable: false, length: 50 })
+  @Column({ name: 'email', type: 'varchar', nullable: false, length: 50, unique:true })
   email: string;
 
   @Column({ name: 'password', type: 'varchar', nullable: false, length: 8 })
