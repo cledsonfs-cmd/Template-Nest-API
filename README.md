@@ -46,7 +46,7 @@ $ npm run test:cov
 ## Docker
 
 ```bash
-$ docker compose up -d
+$ docker compose up -d --build
 ```
 ## Stay in touch
 
