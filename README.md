@@ -41,7 +41,7 @@ $ npm run test:cov
 
 ### Documentation
 
-* Swagger (development environment): [http://localhost:3000/swagger-ui/index.html](http://localhost:3000/swagger-ui/index.html)
+* Swagger (development environment): [http://localhost:3000/api](http://localhost:3000/api)
 
 ## Docker
 
