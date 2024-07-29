@@ -14,7 +14,7 @@ import { SignInDto } from './dto/sign-in.dto';
 import { Public } from './decorators/public.decorator';
 import { ApiBearerAuth } from '@nestjs/swagger';
 
-@Controller('auth')
+@Controller('users')
 export class AuthController {
   constructor(private authService: AuthService) {}
 
@@ -22,7 +22,7 @@ export class AuthController {
   @Public()
   @Post('login')
   signIn(@Body() signInDto: SignInDto) {
-    return this.authService.signIn(signInDto.username, signInDto.password);
+    return this.authService.signIn(signInDto.email, signInDto.password);
   }
 
   @ApiBearerAuth('Bearer')

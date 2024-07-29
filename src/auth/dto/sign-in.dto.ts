@@ -4,10 +4,10 @@ import { IsNotEmpty, IsString } from 'class-validator';
 //@SwaggerModule('ssss')
 @ApiTags('cats')
 export class SignInDto {
-  @ApiProperty({ example: 'username', description: 'Efetuar login no sistema' })
+  @ApiProperty({ example: 'email', description: 'Efetuar login no sistema' })
   @IsString()
   @IsNotEmpty()
-  username: string;
+  email: string;
 
   @ApiProperty({ example: 'password' })
   @IsString()
