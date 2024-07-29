@@ -17,7 +17,7 @@ import { UserHistoricoService } from 'src/user-historico/user-historico.service'
 import { StatusEnum } from 'src/enum/StatusEnum';
 import { ApiBearerAuth } from '@nestjs/swagger';
 
-@Controller('user')
+@Controller('users')
 export class UserController {
   constructor(
     private readonly userService: UsersService,
@@ -42,7 +42,7 @@ export class UserController {
             user.email +
             ' criado com o status ' +
             StatusEnum.ATIVO,
-          idUser: user.id,
+          idUser: user.uid,
         });
       });
       return objeto;
@@ -55,7 +55,7 @@ export class UserController {
   }
 
   @ApiBearerAuth('Bearer')
-  @Get()
+  @Get('all')
   findAll() {
     return this.userService.findAll();
   }

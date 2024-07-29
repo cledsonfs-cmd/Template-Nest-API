@@ -9,7 +9,7 @@ import {
 @Entity()
 export class User extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  uid: string;
 
   @UpdateDateColumn({
     name: 'updated_at',
@@ -26,6 +26,9 @@ export class User extends BaseEntity {
     unique: true,
   })
   email: string;
+
+  @Column({ name: 'nome', type: 'varchar', nullable: true, length: 100 })
+  nome: string;
 
   @Column({ name: 'password', type: 'varchar', nullable: false, length: 10 })
   password: string;

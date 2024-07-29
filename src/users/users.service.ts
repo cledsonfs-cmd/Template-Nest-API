@@ -29,13 +29,13 @@ export class UsersService {
     return this.repository.findOneBy({ email: email });
   }
 
-  async update(id: string, updateUserDto: UpdateUserDto): Promise<User> {
+  async update(uid: string, updateUserDto: UpdateUserDto): Promise<User> {
     const objeto = await this.repository.preload({
-      id: id,
+      uid: uid,
       ...updateUserDto,
     });
     if (!objeto) {
-      throw new NotFoundException(`User ${id} not found`);
+      throw new NotFoundException(`User ${uid} not found`);
     }
     return this.repository.save(objeto);
   }
