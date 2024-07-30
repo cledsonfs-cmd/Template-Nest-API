@@ -1,11 +1,12 @@
-import { Module } from '@nestjs/common';
-import { AuthService } from './auth.service';
-import { UsersModule } from '../users/users.module';
-import { JwtModule } from '@nestjs/jwt';
-import { AuthController } from './auth.controller';
-import { jwtConstants } from './constants';
 import { APP_GUARD } from '@nestjs/core';
+import { AuthController } from './auth.controller';
 import { AuthGuard } from './auth.guard';
+import { AuthService } from './auth.service';
+import { JwtModule } from '@nestjs/jwt';
+import { Module } from '@nestjs/common';
+import { UserHistoricoModule } from 'src/user-historico/user-historico.module';
+import { UsersModule } from '../users/users.module';
+import { jwtConstants } from './constants';
 
 @Module({
   imports: [
@@ -15,8 +16,10 @@ import { AuthGuard } from './auth.guard';
       secret: jwtConstants.secret,
       signOptions: { expiresIn: '60s' },
     }),
+    UserHistoricoModule,
   ],
-  providers: [AuthService,
+  providers: [
+    AuthService,
     {
       provide: APP_GUARD,
       useClass: AuthGuard,

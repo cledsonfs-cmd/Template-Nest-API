@@ -10,9 +10,10 @@ import {
 import { UserHistoricoService } from './user-historico.service';
 import { CreateUserHistoricoDto } from './dto/create-user-historico.dto';
 import { UpdateUserHistoricoDto } from './dto/update-user-historico.dto';
-import { ApiBearerAuth } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 @Controller('user-historico')
+@ApiTags('User')
 export class UserHistoricoController {
   constructor(private readonly userHistoricoService: UserHistoricoService) {}
 
