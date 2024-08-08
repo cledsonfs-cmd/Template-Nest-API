@@ -21,11 +21,11 @@ export class UserHistoricoService {
     return this.repository.find();
   }
 
-  findOne(id: string) {
+  findOne(id: number) {
     return this.repository.findOneBy({ id: id });
   }
 
-  async update(id: string, updateUserHistoricoDto: UpdateUserHistoricoDto) {
+  async update(id: number, updateUserHistoricoDto: UpdateUserHistoricoDto) {
     const userHistorico = await this.repository.preload({
       id: id,
       ...updateUserHistoricoDto,
@@ -36,7 +36,7 @@ export class UserHistoricoService {
     return this.repository.save(userHistorico);
   }
 
-  async remove(id: string) {
+  async remove(id: number) {
     const item = await this.findOne(id);
     return this.repository.remove(item);
   }

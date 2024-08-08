@@ -31,14 +31,14 @@ export class UserHistoricoController {
 
   @ApiBearerAuth('Bearer')
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: number) {
     return this.userHistoricoService.findOne(id);
   }
 
   @ApiBearerAuth('Bearer')
   @Patch(':id')
   update(
-    @Param('id') id: string,
+    @Param('id') id: number,
     @Body() updateUserHistoricoDto: UpdateUserHistoricoDto,
   ) {
     return this.userHistoricoService.update(id, updateUserHistoricoDto);
@@ -46,7 +46,7 @@ export class UserHistoricoController {
 
   @ApiBearerAuth('Bearer')
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  remove(@Param('id') id: number) {
     return this.userHistoricoService.remove(id);
   }
 }

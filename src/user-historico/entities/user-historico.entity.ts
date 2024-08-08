@@ -6,12 +6,10 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import { User } from 'src/users/entities/user.entity';
-
-@Entity()
+@Entity('user_historico', { schema: 'template_nestjs' })
 export class UserHistorico extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id: number;
 
   @Column({ name: 'descricao', type: 'varchar', length: 50 })
   descricao: string;

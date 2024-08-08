@@ -28,14 +28,14 @@ export class AuthController {
   @Public()
   @Post('login')
   signIn(@Body() signInDto: SignInDto) {
-    return this.authService.signIn(signInDto.email, signInDto.password);
+    return this.authService.signIn(signInDto.username, signInDto.password);
   }
 
   @HttpCode(HttpStatus.OK)
   @Public()
   @Post('refresh')
   reresh(@Body() signInDto: SignInDto) {
-    return this.authService.signIn(signInDto.email, signInDto.password);
+    return this.authService.signIn(signInDto.username, signInDto.password);
   }
 
   @ApiBearerAuth('Bearer')
@@ -63,7 +63,7 @@ export class AuthController {
             user.email +
             ' criado com o status ' +
             StatusEnum.ATIVO,
-          idUser: user.uid,
+          id: user.id,
         });
       });
       return objeto;

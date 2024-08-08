@@ -1,7 +1,6 @@
 import { IsNotEmpty, IsString } from 'class-validator';
 
 import { ApiProperty } from '@nestjs/swagger';
-import { User } from 'src/users/entities/user.entity';
 
 export class CreateUserHistoricoDto {
   @ApiProperty({ example: 'Descrição' })
@@ -9,6 +8,6 @@ export class CreateUserHistoricoDto {
   @IsNotEmpty()
   descricao: string;
 
-  @ApiProperty({ example: 'uuid' })
-  idUser: string;
+  @ApiProperty({ example: 'id' })
+  id: number;
 }

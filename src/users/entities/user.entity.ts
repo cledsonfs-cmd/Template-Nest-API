@@ -1,22 +1,11 @@
-import {
-  BaseEntity,
-  Column,
-  Entity,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
+@Entity('users', { schema: 'template_nestjs' })
 export class User extends BaseEntity {
-  @PrimaryGeneratedColumn('uuid')
-  uid: string;
-
-  @UpdateDateColumn({
-    name: 'updated_at',
-    type: 'timestamptz',
-    default: () => 'CURRENT_TIMESTAMP',
+  @PrimaryGeneratedColumn('identity', {
+    generatedIdentity: 'ALWAYS',
   })
-  updatedAt: Date;
+  id: number;
 
   @Column({
     name: 'email',
@@ -33,9 +22,15 @@ export class User extends BaseEntity {
   @Column({ name: 'password', type: 'varchar', nullable: false, length: 10 })
   password: string;
 
-  @Column({ name: 'status', type: 'text' })
-  status: string;
+  @Column({ name: 'id_status', type: 'int4' })
+  idstatus: string;
 
-  @Column({ name: 'role', type: 'text' })
-  role: string;
+  @Column({ name: 'id_role', type: 'int4' })
+  idrole: number;
+
+  @Column({ name: 'provedor', type: 'text' })
+  provedor: number;
+
+  @Column({ name: 'imageUrl', type: 'text' })
+  imageUrl: number;
 }

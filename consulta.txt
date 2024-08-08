@@ -1,2 +1,8 @@
 https://www.sidechannel.blog/criando-uma-api-com-nestjs/
 http://localhost:3000/api
+
+
+npm install --save @nestjs/typeorm typeorm pg @nestjs/config
+npm start
+npm run migration:create --name=user
+npm run migration:run
